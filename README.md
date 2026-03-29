@@ -115,8 +115,6 @@ LatentPilot is built around three key ideas:
 - [ ] Release inference code
 - [ ] Release model weights
 - [ ] Release data preparation scripts
-- [ ] Release project page details
-- [ ] Release citation info after public release
 
 ---
 
