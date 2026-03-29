@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="LatentPilot: Scene-Aware Vision-and-Language Navigation by Dreaming Ahead with Latent Visual Reasoning">
+  <meta name="keywords" content="LatentPilot, Vision-and-Language Navigation, Embodied Navigation, Scene Understanding">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LatentPilot | Scene-Aware Vision-and-Language Navigation by Dreaming Ahead with Latent Visual Reasoning</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans:400,500,700|Noto+Sans:400,500,700|Castoro:400,700"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #111935;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-strong: rgba(255, 255, 255, 0.12);
+      --text: #ecf2ff;
+      --muted: #b8c2e3;
+      --line: rgba(255, 255, 255, 0.12);
+      --accent: #7c9cff;
+      --accent-2: #56d4ff;
+      --accent-3: #8f6fff;
+      --gold: #ffd76a;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Google Sans", "Noto Sans", sans-serif;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(124, 156, 255, 0.28), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(86, 212, 255, 0.22), transparent 24%),
+        radial-gradient(circle at 50% 100%, rgba(143, 111, 255, 0.18), transparent 28%),
+        linear-gradient(180deg, #070b17 0%, #0b1020 55%, #0b1224 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a {
+      color: var(--accent-2);
+      transition: all 0.2s ease;
+    }
+
+    a:hover {
+      color: #ffffff;
+    }
+
+    .navbar {
+      background: rgba(8, 12, 26, 0.72);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .navbar-item,
+    .navbar-link {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .navbar-item:hover,
+    .navbar-link:hover {
+      background: rgba(255, 255, 255, 0.06) !important;
+      color: #fff !important;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding-top: 2rem;
+    }
+
+    .hero:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      pointer-events: none;
+    }
+
+    .hero-body {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    .mini-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 1rem;
+    }
+
+    .title-gradient {
+      background: linear-gradient(90deg, #ffffff 0%, #bfcfff 35%, #79dfff 72%, #d1d8ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .publication-title-main {
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.6rem !important;
+    }
+
+    .publication-title-sub {
+      font-size: clamp(1.15rem, 2vw, 1.6rem);
+      color: var(--muted);
+      max-width: 1000px;
+      margin: 0 auto;
+      line-height: 1.45;
+    }
+
+    .publication-authors {
+      margin-top: 1.5rem;
+      line-height: 2;
+    }
+
+    .publication-authors .author-block {
+      display: inline-block;
+      margin: 0 0.25rem;
+      color: #eef3ff;
+    }
+
+    .author-block a {
+      color: #eef3ff;
+      font-weight: 500;
+    }
+
+    .author-block a:hover {
+      color: var(--accent-2);
+    }
+
+    .affiliation-line {
+      color: var(--muted);
+      margin-top: 0.35rem;
+      font-size: 1rem;
+    }
+
+    .hero-visual {
+      margin-top: 2rem;
+    }
+
+    .glass-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.05));
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-media-card {
+      padding: 1rem;
+    }
+
+    .hero-icon {
+      width: min(180px, 42vw);
+      height: auto;
+      display: block;
+      margin: 0 auto 1rem auto;
+      filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.32));
+    }
+
+    .button-row {
+      margin-top: 1.5rem;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-pill {
+      border-radius: 999px;
+      padding-left: 1.15rem;
+      padding-right: 1.15rem;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      transition: all 0.2s ease;
+    }
+
+    .btn-pill:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+      border-color: rgba(255,255,255,0.18);
+    }
+
+    .btn-pill.is-disabled {
+      opacity: 0.8;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: #081021 !important;
+      border: none;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: #fff;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      font-size: 1.03rem;
+    }
+
+    .info-card {
+      padding: 1.25rem;
+      height: 100%;
+    }
+
+    .info-card .icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(124,156,255,0.22), rgba(86,212,255,0.16));
+      margin-bottom: 0.9rem;
+      color: #dfe8ff;
+      font-size: 1.1rem;
+    }
+
+    .info-card h3 {
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .info-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    .video-card {
+      padding: 1rem;
+      height: 100%;
+    }
+
+    .video-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.35rem;
+    }
+
+    .video-desc {
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin-bottom: 0.85rem;
+      line-height: 1.6;
+    }
+
+    .video-frame {
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      background: #000;
+    }
+
+    .abstract-card,
+    .bib-card,
+    .overview-card {
+      padding: 1.6rem;
+    }
+
+    .abstract-card p,
+    .overview-card p {
+      color: #e7eeff;
+      line-height: 1.85;
+      font-size: 1rem;
+    }
+
+    .highlight-pill {
+      display: inline-block;
+      margin: 0.2rem 0.35rem 0.2rem 0;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #dfe8ff;
+    }
+
+    pre {
+      background: #0a1020 !important;
+      color: #e8eeff !important;
+      border-radius: 20px !important;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1.2rem !important;
+      overflow-x: auto;
+    }
+
+    code {
+      color: #d8e6ff;
+    }
+
+    .thank-you {
+      text-align: center;
+      color: var(--muted);
+      font-size: 1.12rem;
+      margin-top: 0.8rem;
+    }
+
+    .footer {
+      background: transparent;
+      color: var(--muted);
+      padding-top: 1rem;
+      padding-bottom: 2rem;
+    }
+
+    .footer a {
+      color: #d9e5ff;
+    }
+
+    .anchor-offset {
+      scroll-margin-top: 5rem;
+    }
+
+    @media screen and (max-width: 768px) {
+      .hero-body {
+        padding-top: 2.2rem;
+        padding-bottom: 2rem;
+      }
+
+      .publication-authors {
+        font-size: 0.98rem;
+      }
+
+      .affiliation-line {
+        font-size: 0.94rem;
+      }
+
+      .section-title {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="container is-max-desktop">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#top" style="font-weight:700;">LatentPilot</a>
+      </div>
+      <div class="navbar-menu is-active">
+        <div class="navbar-end">
+          <a class="navbar-item" href="#overview">Overview</a>
+          <a class="navbar-item" href="#videos">Videos</a>
+          <a class="navbar-item" href="#abstract">Abstract</a>
+          <a class="navbar-item" href="#citation">BibTeX</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero" id="top">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <div class="mini-badge">
+              <span>✨</span>
+              <span>Champion of VLN-PE in InternUtopia and Real World Challenge, IROS 2025</span>
+            </div>
+
+            <h1 class="title publication-title-main title-gradient">LatentPilot</h1>
+            <h2 class="publication-title-sub">
+              Scene-Aware Vision-and-Language Navigation by Dreaming Ahead with Latent Visual Reasoning
+            </h2>
+
+            <div class="publication-authors is-size-5">
+              <span class="author-block"><a href="https://abdd.top" target="_blank">Haihong Hao<sup>🍕</sup></a>;</span>
+              <span class="author-block">Lei Chen<sup>🍕</sup>;</span>
+              <span class="author-block"><a href="https://mingfei.info" target="_blank">Mingfei Han<sup>🌭</sup></a>;</span>
+              <span class="author-block"><a href="https://scholar.google.com/citations?hl=en&user=RLAgwBkAAAAJ" target="_blank">Changlin Li<sup>🍔</sup></a>;</span>
+              <span class="author-block"><a href="https://marsaki.github.io/" target="_blank">Dong An<sup>⭐</sup></a>;</span>
+              <span class="author-block"><a href="https://yuqiang-yang.github.io/" target="_blank">Yuqiang Yang<sup>🌈</sup></a>;</span>
+              <span class="author-block"><a href="https://www.zhihui.li/" target="_blank">Zhihui Li<sup>🍕</sup></a>;</span>
+              <span class="author-block"><a href="https://www.xiaojun.ai/" target="_blank">Xiaojun Chang<sup>🍕</sup></a></span>
+            </div>
+
+            <div class="affiliation-line">
+              <span class="author-block"><sup>🍕</sup>University of Science and Technology of China</span> &nbsp;|&nbsp;
+              <span class="author-block"><sup>🌭</sup>MBZUAI</span> &nbsp;|&nbsp;
+              <span class="author-block"><sup>🍔</sup>Stanford University</span> &nbsp;|&nbsp;
+              <span class="author-block"><sup>⭐</sup>Amap, Alibaba Group</span> &nbsp;|&nbsp;
+              <span class="author-block"><sup>🌈</sup>Shanghai AI Laboratory</span>
+            </div>
+
+            <div class="buttons is-centered button-row">
+              <a class="button btn-pill btn-primary is-disabled" href="#" onclick="return false;">
+                <span class="icon"><i class="ai ai-arxiv"></i></span>
+                <span>Paper · Coming Soon</span>
+              </a>
+              <a class="button btn-pill is-disabled" href="#" onclick="return false;">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Code · Coming Soon</span>
+              </a>
+              <a class="button btn-pill is-disabled" href="#" onclick="return false;">
+                <span class="icon"><i class="fas fa-cube"></i></span>
+                <span>Models · Coming Soon</span>
+              </a>
+            </div>
+
+            <div class="hero-visual">
+              <div class="glass-card hero-media-card">
+                <img src="./assets/icon.png" alt="LatentPilot Icon" class="hero-icon">
+
+                <div class="video-frame" style="max-width: 960px; margin: 0 auto;">
+                  <video autoplay muted loop playsinline controls>
+                    <source src="./assets/4975_498.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+
+                <p style="margin-top: 1rem; color: var(--muted); line-height: 1.7; max-width: 900px; margin-left: auto; margin-right: auto;">
+                  LatentPilot learns to <b>dream ahead before acting</b>: it leverages future observations during training
+                  to internalize action-conditioned visual dynamics, while requiring no future frames at inference time.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section anchor-offset" id="overview">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered">
+        <h2 class="section-title">Overview</h2>
+        <p class="section-subtitle">
+          A future-aware navigation paradigm that learns latent visual reasoning from action-induced scene dynamics.
+        </p>
+      </div>
+
+      <div class="glass-card overview-card" style="margin-bottom: 1.5rem;">
+        <p>
+          Existing vision-and-language navigation models mainly reason over past and current observations, while largely
+          overlooking how actions reshape future views. LatentPilot addresses this limitation by learning
+          <b>action-conditioned visual dynamics</b> from future observations during training. Its latent tokens evolve across
+          steps, serve as both output and next-step input, and enable the agent to reason about <b>what the scene will look
+          like after acting</b>.
+        </p>
+        <div style="margin-top: 1rem;">
+          <span class="highlight-pill">Dream Ahead</span>
+          <span class="highlight-pill">Latent Visual Reasoning</span>
+          <span class="highlight-pill">Flywheel-Style Training</span>
+          <span class="highlight-pill">No Future Frames at Inference</span>
+          <span class="highlight-pill">Real-Robot Validation</span>
+        </div>
+      </div>
+
+      <div class="columns is-multiline">
+        <div class="column is-6">
+          <div class="glass-card info-card">
+            <div class="icon-wrap"><i class="fas fa-brain"></i></div>
+            <h3>Scene-Aware Reasoning</h3>
+            <p>
+              LatentPilot learns to anticipate near-future visual changes, helping the agent understand not only what it sees now,
+              but also how the world is likely to evolve under candidate actions.
+            </p>
+          </div>
+        </div>
+
+        <div class="column is-6">
+          <div class="glass-card info-card">
+            <div class="icon-wrap"><i class="fas fa-sync-alt"></i></div>
+            <h3>Flywheel-Style Training</h3>
+            <p>
+              The model is iteratively retrained on on-policy trajectories to better match the agent's behavior distribution,
+              with expert takeover used as a safeguard when the policy deviates too much.
+            </p>
+          </div>
+        </div>
+
+        <div class="column is-6">
+          <div class="glass-card info-card">
+            <div class="icon-wrap"><i class="fas fa-layer-group"></i></div>
+            <h3>Latent Tokens Across Time</h3>
+            <p>
+              Visual latent tokens are carried across steps in a continuous latent space, enabling compact memory,
+              global attention, and future-aware decision making without explicit latent supervision.
+            </p>
+          </div>
+        </div>
+
+        <div class="column is-6">
+          <div class="glass-card info-card">
+            <div class="icon-wrap"><i class="fas fa-robot"></i></div>
+            <h3>Strong Performance in Simulation and Reality</h3>
+            <p>
+              Experiments on R2R-CE, RxR-CE, and R2R-PE demonstrate new state-of-the-art results, while real-robot tests
+              highlight improved understanding of environment-action dynamics in diverse scenes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section anchor-offset" id="videos">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered">
+        <h2 class="section-title">Video Showcase</h2>
+        <p class="section-subtitle">
+          Multi-view demonstrations of LatentPilot in navigation scenarios.
+        </p>
+      </div>
+
+      <div class="columns">
+        <div class="column is-12">
+          <div class="glass-card video-card">
+            <div class="video-title">Main Teaser</div>
+            <div class="video-desc">
+              A compact overview video illustrating the core behavior of LatentPilot and its future-aware navigation dynamics.
+            </div>
+            <div class="video-frame">
+              <video controls playsinline>
+                <source src="./assets/4975_498.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <div class="column is-6">
+          <div class="glass-card video-card">
+            <div class="video-title">First-Person View</div>
+            <div class="video-desc">
+              Egocentric observation stream showing what the agent sees while navigating and reasoning over future consequences.
+            </div>
+            <div class="video-frame">
+              <video controls playsinline>
+                <source src="./assets/first-person.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <div class="column is-6">
+          <div class="glass-card video-card">
+            <div class="video-title">Third-Person View</div>
+            <div class="video-desc">
+              External visualization of the navigation trajectory, making the policy behavior and path execution easier to inspect.
+            </div>
+            <div class="video-frame">
+              <video controls playsinline>
+                <source src="./assets/third-person.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section anchor-offset" id="abstract">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="section-title">Abstract</h2>
+          <p class="section-subtitle">Future-aware VLN through latent visual reasoning.</p>
+
+          <div class="glass-card abstract-card has-text-justified">
+            <p>
+              Existing vision-and-language navigation (VLN) models primarily reason over past and current visual observations,
+              while largely ignoring the future visual dynamics induced by actions. As a result, they often lack an effective
+              understanding of the causal relationship between actions and how the visual world changes, limiting robust
+              decision-making. Humans, in contrast, can “imagine” the near future by leveraging action-dynamics causality,
+              which improves both environmental understanding and navigation choices.
+            </p>
+            <p>
+              Inspired by this capability, we propose <b>LatentPilot</b>, a new paradigm that exploits future observations during
+              training as a valuable data source to learn action-conditioned visual dynamics, while requiring no access to future
+              frames at inference. Concretely, we propose a flywheel-style training mechanism that iteratively collects on-policy
+              trajectories and retrains the model to better match the agent’s behavior distribution, with an expert takeover triggered
+              when the agent deviates excessively.
+            </p>
+            <p>
+              LatentPilot further learns visual latent tokens without explicit supervision; these latent tokens attend globally in a
+              continuous latent space and are carried across steps, serving as both the current output and the next input, thereby
+              enabling the agent to “dream ahead” and reason about how actions will affect subsequent observations. Experiments on
+              R2R-CE, RxR-CE, and R2R-PE benchmarks achieve new SOTA results, and real-robot tests across diverse environments
+              demonstrate LatentPilot’s superior understanding of environment-action dynamics in scene.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section anchor-offset" id="citation">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered">
+        <h2 class="section-title">BibTeX</h2>
+        <p class="section-subtitle">Citation information will be updated after release.</p>
+      </div>
+
+      <div class="glass-card bib-card">
+        <pre><code>@article{hao2026latentpilot,
+  title   = {LatentPilot: Scene-Aware Vision-and-Language Navigation by Dreaming Ahead with Latent Visual Reasoning},
+  author  = {Hao, Haihong and Chen, Lei and Han, Mingfei and Li, Changlin and An, Dong and Yang, Yuqiang and Li, Zhihui and Chang, Xiaojun},
+  year    = {2026}
+}</code></pre>
+      </div>
+
+      <p class="thank-you">Thank you (.❛ ᴗ ❛.)</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8 has-text-centered">
+          <div class="content">
+            <p>
+              Website design adapted from <a href="https://nerfies.github.io/" target="_blank">Nerfies</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
