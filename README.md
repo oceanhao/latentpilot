@@ -1,12 +1,4 @@
-<div align="center">
 
-<img src="static/images/logo.png" width="180" alt="LatentPilot Logo" />
-
-# <span style="background: linear-gradient(90deg, #7aa2ff 0%, #76e4ff 45%, #c3b7ff 100%); -webkit-background-clip: text; color: transparent; font-style: italic;">LatentPilot</span>
-
-### Scene-Aware Vision-and-Language Navigation by Dreaming Ahead with Latent Visual Reasoning
-
-</div>
 
 <div align="center">
 
@@ -33,7 +25,7 @@
 </p>
 
 <p>
-  <img src="assets/icon.png" width="220" alt="LatentPilot icon" />
+<img src="static/images/logo.png" width="220" alt="LatentPilot Logo" />
 </p>
 
 <p>
@@ -128,7 +120,7 @@ LatentPilot is built around three key ideas:
 
 ---
 
-## 🍺 Citation
+<!-- ## 🍺 Citation
 
 Citation information will be updated after release.
 
@@ -137,4 +129,4 @@ Citation information will be updated after release.
   title   = {LatentPilot: Scene-Aware Vision-and-Language Navigation by Dreaming Ahead with Latent Visual Reasoning},
   author  = {Hao, Haihong and Chen, Lei and Han, Mingfei and Li, Changlin and An, Dong and Yang, Yuqiang and Li, Zhihui and Chang, Xiaojun},
   year    = {2026}
-}
+} -->

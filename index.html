@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="icon" type="image/png" href="./static/images/logo.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -84,6 +84,27 @@
       color: #fff !important;
     }
 
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      border-radius: 10px;
+      filter: drop-shadow(0 4px 12px rgba(86, 212, 255, 0.25));
+    }
+
+    .brand-title {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
     .hero {
       position: relative;
       overflow: hidden;
@@ -114,6 +135,46 @@
       color: var(--muted);
       font-size: 0.92rem;
       margin-bottom: 1rem;
+    }
+
+    .hero-logo-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 168px;
+      height: 168px;
+      margin: 0 auto 1.2rem auto;
+    }
+
+    .hero-logo-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(86, 212, 255, 0.28) 0%, rgba(124, 156, 255, 0.12) 45%, transparent 75%);
+      filter: blur(14px);
+      z-index: 0;
+    }
+
+    .hero-logo-ring {
+      position: absolute;
+      inset: 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(124,156,255,0.16), rgba(86,212,255,0.10));
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.22);
+      z-index: 1;
+    }
+
+    .hero-logo {
+      position: relative;
+      z-index: 2;
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.28));
     }
 
     .title-gradient {
@@ -270,6 +331,8 @@
     .video-card {
       padding: 1rem;
       height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     .video-title {
@@ -284,6 +347,7 @@
       font-size: 0.96rem;
       margin-bottom: 0.85rem;
       line-height: 1.6;
+      min-height: 3.2em;
     }
 
     .video-frame {
@@ -294,12 +358,32 @@
       background: rgba(255,255,255,0.04);
     }
 
+    .video-frame.main-video {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .video-frame.equal-video {
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+    }
+
     video {
       display: block;
       width: 100%;
       height: auto;
       border-radius: 18px;
       background: #000;
+    }
+
+    .video-frame.equal-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 18px;
     }
 
     .abstract-card,
@@ -357,6 +441,15 @@
       color: #d9e5ff;
     }
 
+    .footer-logo {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+      filter: drop-shadow(0 4px 12px rgba(86, 212, 255, 0.2));
+    }
+
     .anchor-offset {
       scroll-margin-top: 5rem;
     }
@@ -378,6 +471,25 @@
       .section-title {
         font-size: 1.7rem;
       }
+
+      .hero-logo-wrap {
+        width: 144px;
+        height: 144px;
+      }
+
+      .hero-logo {
+        width: 88px;
+        height: 88px;
+      }
+
+      .brand-logo {
+        width: 30px;
+        height: 30px;
+      }
+
+      .video-desc {
+        min-height: auto;
+      }
     }
   </style>
 </head>
@@ -386,7 +498,12 @@
   <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="container is-max-desktop">
       <div class="navbar-brand">
-        <a class="navbar-item" href="#top" style="font-weight:700;">LatentPilot</a>
+        <a class="navbar-item" href="#top">
+          <div class="brand-wrap">
+            <img src="./static/images/logo.png" alt="LatentPilot Logo" class="brand-logo">
+            <span class="brand-title">LatentPilot</span>
+          </div>
+        </a>
       </div>
       <div class="navbar-menu is-active">
         <div class="navbar-end">
@@ -404,6 +521,11 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
+            <div class="hero-logo-wrap">
+              <div class="hero-logo-ring"></div>
+              <img src="./static/images/logo.png" alt="LatentPilot Logo" class="hero-logo">
+            </div>
+
             <div class="mini-badge">
               <span>✨</span>
               <span>Champion of VLN-PE in InternUtopia and Real World Challenge, IROS 2025</span>
@@ -452,7 +574,7 @@
               <div class="glass-card hero-media-card">
                 <img src="./assets/icon.png" alt="LatentPilot Icon" class="hero-icon">
 
-                <div class="video-frame" style="max-width: 960px; margin: 0 auto;">
+                <div class="video-frame main-video">
                   <video autoplay muted loop playsinline controls>
                     <source src="./assets/4975_498.mp4" type="video/mp4">
                     Your browser does not support the video tag.
@@ -554,14 +676,14 @@
         </p>
       </div>
 
-      <div class="columns">
+      <div class="columns is-multiline">
         <div class="column is-12">
           <div class="glass-card video-card">
             <div class="video-title">Main Teaser</div>
             <div class="video-desc">
               A compact overview video illustrating the core behavior of LatentPilot and its future-aware navigation dynamics.
             </div>
-            <div class="video-frame">
+            <div class="video-frame main-video">
               <video controls playsinline>
                 <source src="./assets/4975_498.mp4" type="video/mp4">
                 Your browser does not support the video tag.
@@ -576,7 +698,7 @@
             <div class="video-desc">
               Egocentric observation stream showing what the agent sees while navigating and reasoning over future consequences.
             </div>
-            <div class="video-frame">
+            <div class="video-frame equal-video">
               <video controls playsinline>
                 <source src="./assets/first-person.mp4" type="video/mp4">
                 Your browser does not support the video tag.
@@ -591,7 +713,7 @@
             <div class="video-desc">
               External visualization of the navigation trajectory, making the policy behavior and path execution easier to inspect.
             </div>
-            <div class="video-frame">
+            <div class="video-frame equal-video">
               <video controls playsinline>
                 <source src="./assets/third-person.mp4" type="video/mp4">
                 Your browser does not support the video tag.
@@ -663,6 +785,7 @@
         <div class="column is-8 has-text-centered">
           <div class="content">
             <p>
+              <img src="./static/images/logo.png" alt="LatentPilot Logo" class="footer-logo">
               Website design adapted from <a href="https://nerfies.github.io/" target="_blank">Nerfies</a>.
             </p>
           </div>
