@@ -35,10 +35,16 @@
   <img src="https://img.shields.io/badge/Project%20Page-LatentPilot-6c63ff?style=for-the-badge" alt="project page" />
 </a>
 <p>
-  <img src="https://img.shields.io/badge/Paper-Coming%20Soon-b31b1b?style=for-the-badge" alt="paper" />
-  <img src="https://img.shields.io/badge/Code-Coming%20Soon-111111?style=for-the-badge" alt="code" />
-  <img src="https://img.shields.io/badge/Models-Coming%20Soon-f5a623?style=for-the-badge" alt="models" />
-  <img src="https://img.shields.io/badge/License-MIT-f0c419?style=for-the-badge" alt="license" />
+  <a href="https://arxiv.org/abs/2603.29165v1" target="_blank">
+    <img src="https://img.shields.io/badge/Paper-LatentPilot-b31b1b?style=for-the-badge" alt="paper" />
+  </a>
+  <a href="https://github.com/oceanhao/latentpilot" target="_blank">
+    <img src="https://img.shields.io/badge/Code-LatentPilot-111111?style=for-the-badge" alt="code" />
+  </a>
+  <a href="https://abdd.top/latentpilot/" target="_blank">
+    <img src="https://img.shields.io/badge/Models-LatentPilot-f5a623?style=for-the-badge" alt="models" />
+  </a>
+    <img src="https://img.shields.io/badge/License-MIT-f0c419?style=for-the-badge" alt="license" />
 </p>
 
 </div>
