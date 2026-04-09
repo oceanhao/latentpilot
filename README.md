@@ -2,13 +2,15 @@
   <img src="https://img.shields.io/badge/Project%20Page-LatentPilot-6c63ff?style=for-the-badge" alt="project page" />
 </a>
 
-<div align="center">
+<!-- <div align="center"> -->
 
 <!-- # [<span style="background: linear-gradient(90deg, #7aa2ff 0%, #76e4ff 45%, #c3b7ff 100%); -webkit-background-clip: text; color: transparent; font-style: italic;">LatentPilot</span>](https://abdd.top/latentpilot/) -->
 <p align="center">
   <img src="static/images/logo.png" width="220" alt="LatentPilot Logo" />
 </p>
+<p align="center">
 https://abdd.top/latentpilot/
+</p>
 <h3 align="center" style="margin-top: 0.2em;">
   LatentPilot: Scene-Aware Vision-and-Language Navigation by Dreaming Ahead with Latent Visual Reasoning
 </h3>
