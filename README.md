@@ -4,11 +4,42 @@
 
 <div align="center">
 
-# [<span style="background: linear-gradient(90deg, #7aa2ff 0%, #76e4ff 45%, #c3b7ff 100%); -webkit-background-clip: text; color: transparent; font-style: italic;">LatentPilot</span>](https://abdd.top/latentpilot/)
+<!-- # [<span style="background: linear-gradient(90deg, #7aa2ff 0%, #76e4ff 45%, #c3b7ff 100%); -webkit-background-clip: text; color: transparent; font-style: italic;">LatentPilot</span>](https://abdd.top/latentpilot/) -->
+<p align="center">
+  <img src="static/images/logo.png" width="220" alt="LatentPilot Logo" />
+</p>
+https://abdd.top/latentpilot/
+<h3 align="center" style="margin-top: 0.2em;">
+  LatentPilot: Scene-Aware Vision-and-Language Navigation by Dreaming Ahead with Latent Visual Reasoning
+</h3>
 
-### Scene-Aware Vision-and-Language Navigation by Dreaming Ahead with Latent Visual Reasoning
+<p align="center">
+  <a href="https://internrobotics.shlab.org.cn/challenge/2025/" target="_blank">
+    <img src="https://img.shields.io/badge/IROS%202025-INTERNUTOPIA%20%26%20REAL%20WORLD%20CHALLENGE-6c63ff?style=for-the-badge" alt="IROS 2025 Challenge" />
+  </a>
+  <img src="https://img.shields.io/badge/VLN--PE-CHAMPION-gold?style=for-the-badge" alt="Champion of VLN-PE" />
+  <img src="https://img.shields.io/badge/AWARD-1ST%20PLACE-32cd32?style=for-the-badge" alt="1st Place" />
+  <img src="https://img.shields.io/badge/PRIZE-%2410%2C000-ff8c42?style=for-the-badge" alt="$10,000 Prize" />
+  <a href="https://abdd.top/latentpilot/" target="_blank">
+    <img src="https://img.shields.io/badge/Project%20Page-LatentPilot-7b68ee?style=for-the-badge" alt="project page" />
+  </a>
+  <a href="https://arxiv.org/abs/2603.29165v1" target="_blank">
+    <img src="https://img.shields.io/badge/Paper-LatentPilot-b31b1b?style=for-the-badge" alt="paper" />
+  </a>
+  <a href="https://github.com/oceanhao/latentpilot" target="_blank">
+    <img src="https://img.shields.io/badge/Code-LatentPilot-111111?style=for-the-badge" alt="code" />
+  </a>
+  <a href="https://abdd.top/latentpilot/" target="_blank">
+    <img src="https://img.shields.io/badge/Models-LatentPilot-f5a623?style=for-the-badge" alt="models" />
+  </a>
+  <img src="https://img.shields.io/badge/License-MIT-f0c419?style=for-the-badge" alt="license" />
+</p>
 
-<p>
+<p align="center">
+  <b>Champion of VLN-PE in InternUtopia and Real World Challenge, IROS 2025</b>
+</p>
+
+<p align="center">
   <a href="https://abdd.top" target="_blank">Haihong Hao<sup>🍕</sup></a> ·
   Lei Chen<sup>🍕</sup> ·
   <a href="https://mingfei.info" target="_blank">Mingfei Han<sup>🌭</sup></a> ·
@@ -19,7 +50,7 @@
   <a href="https://www.xiaojun.ai/" target="_blank">Xiaojun Chang<sup>🍕</sup></a>
 </p>
 
-<p>
+<p align="center">
   <sup>🍕</sup>University of Science and Technology of China &nbsp;&nbsp;
   <sup>🌭</sup>MBZUAI &nbsp;&nbsp;
   <sup>🍔</sup>Stanford University &nbsp;&nbsp;
@@ -27,27 +58,6 @@
   <sup>🌈</sup>Shanghai AI Laboratory
 </p>
 
-<p>
-<img src="static/images/logo.png" width="220" alt="LatentPilot Logo" />
-</p>
-
-<a href="https://abdd.top/latentpilot/" target="_blank">
-  <img src="https://img.shields.io/badge/Project%20Page-LatentPilot-6c63ff?style=for-the-badge" alt="project page" />
-</a>
-<p>
-  <a href="https://arxiv.org/abs/2603.29165v1" target="_blank">
-    <img src="https://img.shields.io/badge/Paper-LatentPilot-b31b1b?style=for-the-badge" alt="paper" />
-  </a>
-  <a href="https://github.com/oceanhao/latentpilot" target="_blank">
-    <img src="https://img.shields.io/badge/Code-LatentPilot-111111?style=for-the-badge" alt="code" />
-  </a>
-  <a href="https://abdd.top/latentpilot/" target="_blank">
-    <img src="https://img.shields.io/badge/Models-LatentPilot-f5a623?style=for-the-badge" alt="models" />
-  </a>
-    <img src="https://img.shields.io/badge/License-MIT-f0c419?style=for-the-badge" alt="license" />
-</p>
-
-</div>
 
 ---
 
