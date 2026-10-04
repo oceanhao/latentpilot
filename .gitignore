@@ -1,0 +1,21 @@
+# Local environment and generated files
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store
+
+# Training and evaluation outputs
+checkpoints/
+model_weight/
+data/
+results/
+wandb/
+*.log
+
+# Editor and cluster files
+.vscode/
+slurm-*.out
